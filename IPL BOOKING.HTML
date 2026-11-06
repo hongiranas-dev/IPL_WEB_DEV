@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="ipl booking.css">
+  <meta charset="UTF-8">
+  <!-- This line makes the page scale properly on phones and tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL 2026 Ticket Booking</title>
+
+  <!-- Activity 1 is only about structure, so there is no CSS yet.
+       In the next activity we can link a stylesheet here, like this:
+       <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+
+  <!-- ==================== HEADER / NAVIGATION BAR ==================== -->
+  <header>
+    <nav>
+      <!-- Site name / logo text -->
+      <h1>IPL 2026 Tickets</h1>
+
+      <!-- Each link jumps to the section whose id matches the href -->
+      <ul>
+        <li><a href="#matches">Matches</a></li>
+        <li><a href="#booking">Book Ticket</a></li>
+        <li><a href="#my-bookings">My Bookings</a></li>
+        <li><a href="#guidelines">Guidelines</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Everything between <main> tags is the main content of the page -->
+  <main>
+
+    <!-- ==================== HERO / BANNER SECTION ==================== -->
+    <section id="hero">
+      <h2>Experience The Stadium Energy Live!</h2>
+      <p>Grab your seats for the biggest cricket festival of the year.</p>
+
+      <!-- Two buttons: one scrolls to the schedule, the other to the booking form -->
+      <a href="#matches"><button type="button">View Schedule</button></a>
+      <a href="#booking"><button type="button">Book Ticket</button></a>
+    </section>
+
+    <!-- ==================== ABOUT IPL 2026 ==================== -->
+    <section id="about">
+      <h2>About IPL 2026</h2>
+      <p>
+        The Indian Premier League brings together top players from around the
+        world for weeks of fast, exciting T20 cricket. Here are some of the
+        teams and venues you can look forward to.
+      </p>
+
+      <!-- Popular teams (unordered list because order doesn't matter) -->
+      <h3>Popular Teams</h3>
+      <ul>
+        <li>Chennai Super Kings (CSK)</li>
+        <li>Mumbai Indians (MI)</li>
+        <li>Royal Challengers Bengaluru (RCB)</li>
+        <li>Kolkata Knight Riders (KKR)</li>
+        <li>Sunrisers Hyderabad (SRH)</li>
+        <li>Rajasthan Royals (RR)</li>
+      </ul>
+
+      <!-- Major match venues -->
+      <h3>Major Match Venues</h3>
+      <ul>
+        <li>M. A. Chidambaram Stadium, Chennai</li>
+        <li>Wankhede Stadium, Mumbai</li>
+        <li>M. Chinnaswamy Stadium, Bengaluru</li>
+        <li>Eden Gardens, Kolkata</li>
+        <li>Narendra Modi Stadium, Ahmedabad</li>
+      </ul>
+    </section>
+
+    <!-- ==================== MATCH SCHEDULE ==================== -->
+    <section id="matches">
+      <h2>Match Schedule</h2>
+      <p>Note: the matches, dates and prices below are sample data for practice.</p>
+
+      <!-- Team filter: the user picks a team to see only that team's matches.
+           (It won't actually filter yet - that needs JavaScript later.) -->
+      <form>
+        <label for="team-filter">Filter by team:</label>
+        <select id="team-filter" name="team-filter">
+          <option value="all">All Teams</option>
+          <option value="csk">Chennai Super Kings</option>
+          <option value="mi">Mumbai Indians</option>
+          <option value="rcb">Royal Challengers Bengaluru</option>
+          <option value="kkr">Kolkata Knight Riders</option>
+          <option value="srh">Sunrisers Hyderabad</option>
+          <option value="rr">Rajasthan Royals</option>
+        </select>
+      </form>
+
+      <!-- The schedule table -->
+      <table border="1">
+        <!-- Column headings go inside thead -->
+        <thead>
+          <tr>
+            <th>Match No.</th>
+            <th>Teams</th>
+            <th>Date &amp; Time</th>
+            <th>Venue</th>
+            <th>General (₹)</th>
+            <th>Premium (₹)</th>
+            <th>VIP (₹)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <!-- The actual match rows go inside tbody -->
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>CSK vs MI</td>
+            <td>28 Mar 2026, 7:30 PM</td>
+            <td>M. A. Chidambaram Stadium, Chennai</td>
+            <td>1,500</td>
+            <td>3,500</td>
+            <td>8,000</td>
+            <!-- Book button links to the booking form section -->
+            <td><a href="#booking"><button type="button">Book</button></a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>RCB vs KKR</td>
+            <td>30 Mar 2026, 7:30 PM</td>
+            <td>M. Chinnaswamy Stadium, Bengaluru</td>
+            <td>1,800</td>
+            <td>4,000</td>
+            <td>9,000</td>
+            <td><a href="#booking"><button type="button">Book</button></a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>SRH vs RR</td>
+            <td>01 Apr 2026, 3:30 PM</td>
+            <td>Rajiv Gandhi Stadium, Hyderabad</td>
+            <td>1,200</td>
+            <td>3,000</td>
+            <td>7,000</td>
+            <td><a href="#booking"><button type="button">Book</button></a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>MI vs RCB</td>
+            <td>03 Apr 2026, 7:30 PM</td>
+            <td>Wankhede Stadium, Mumbai</td>
+            <td>2,000</td>
+            <td>4,500</td>
+            <td>10,000</td>
+            <td><a href="#booking"><button type="button">Book</button></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== TICKET BOOKING ==================== -->
+    <section id="booking">
+      <h2>Book Your Tickets</h2>
+
+      <!-- Left side: the booking form -->
+      <form id="booking-form">
+
+        <!-- Which match? -->
+        <p>
+          <label for="match">Match:</label>
+          <select id="match" name="match" required>
+            <option value="">-- Select a match --</option>
+            <option value="1">Match 1: CSK vs MI</option>
+            <option value="2">Match 2: RCB vs KKR</option>
+            <option value="3">Match 3: SRH vs RR</option>
+            <option value="4">Match 4: MI vs RCB</option>
+          </select>
+        </p>
+
+        <!-- Which stand? -->
+        <p>
+          <label for="stand">Stand Category:</label>
+          <select id="stand" name="stand" required>
+            <option value="">-- Select a stand --</option>
+            <option value="general">General</option>
+            <option value="premium">Premium</option>
+            <option value="vip">VIP</option>
+          </select>
+        </p>
+
+        <!-- How many tickets? (limited to 1-10 per booking) -->
+        <p>
+          <label for="tickets">Number of Tickets:</label>
+          <input type="number" id="tickets" name="tickets" min="1" max="10" value="1" required>
+        </p>
+
+        <!-- Personal details -->
+        <p>
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </p>
+
+        <p>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </p>
+
+        <p>
+          <label for="phone">Phone Number:</label>
+          <!-- pattern allows exactly 10 digits -->
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+        </p>
+
+        <button type="submit">Confirm Booking</button>
+      </form>
+
+      <!-- Right side: booking summary card.
+           <aside> is used because it's extra info related to the form.
+           The "--" values will be filled in with JavaScript later. -->
+      <aside id="booking-summary">
+        <h3>Booking Summary</h3>
+        <p><strong>Match:</strong> <span id="summary-match">--</span></p>
+        <p><strong>Stand:</strong> <span id="summary-stand">--</span></p>
+        <p><strong>Ticket Price:</strong> ₹<span id="summary-price">0</span></p>
+        <p><strong>Quantity:</strong> <span id="summary-quantity">0</span></p>
+        <hr>
+        <p><strong>Total Amount:</strong> ₹<span id="summary-total">0</span></p>
+      </aside>
+    </section>
+
+    <!-- ==================== MY TICKET BOOKINGS ==================== -->
+    <section id="my-bookings">
+      <h2>My Ticket Bookings</h2>
+
+      <!-- Table is empty for now. Rows will be added after a booking is made. -->
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Match</th>
+            <th>Stand</th>
+            <th>Tickets</th>
+            <th>Total Amount (₹)</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody id="bookings-body">
+          <!-- Future booking records will appear here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==================== GUIDELINES ==================== -->
+    <section id="guidelines">
+      <h2>Guidelines</h2>
+
+      <!-- Three information cards. <article> is used because each card
+           makes sense on its own. -->
+      <article>
+        <h3>Ticket Verification</h3>
+        <p>
+          Show the QR code from your e-ticket at the stadium gate. Each code
+          can be scanned only once, so please don't share it.
+        </p>
+      </article>
+
+      <article>
+        <h3>ID Proof Requirement</h3>
+        <p>
+          Carry a valid government photo ID (Aadhaar, Driving Licence or
+          Passport). The name on the ID must match the name on the ticket.
+        </p>
+      </article>
+
+      <article>
+        <h3>Prohibited Items</h3>
+        <p>
+          Outside food and drinks, sharp objects, lighters, large bags and
+          professional cameras are not allowed inside the stadium.
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>&copy; 2026 IPL Ticket Booking. All rights reserved.</p>
+  </footer>
+   <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+/* =====================================================
+   IPL 2026 Ticket Booking - styles.css
+   Theme: dark blue + gold
+   ===================================================== */
+
+
+/* ---------- 1. THEME VARIABLES ----------
+   All the main colours live here. If we want to change the
+   look of the whole site, we only edit these few lines. */
+:root {
+  --primary: #0b1f4b;        /* dark blue - nav, headings, table headers */
+  --primary-light: #1c3a7a;  /* lighter blue - used in the hero gradient */
+  --accent: #f5b301;         /* gold - buttons, highlights, borders */
+  --accent-dark: #d99a00;    /* darker gold - hover state for buttons */
+  --background: #f4f6fb;     /* soft grey-blue page background */
+  --surface: #ffffff;        /* white - cards, tables, form */
+  --text: #1d2433;           /* main body text */
+  --text-light: #5b6477;     /* quieter text for notes */
+  --border: #d9deea;         /* thin borders on tables and inputs */
+
+  --radius: 10px;            /* rounded corner size used everywhere */
+  --shadow: 0 4px 14px rgba(11, 31, 75, 0.12);  /* soft shadow for cards */
+  --nav-height: 64px;        /* height of the fixed navbar */
+}
+
+
+/* ---------- 2. BASIC RESET & PAGE DEFAULTS ---------- */
+
+/* Make width/height include padding and borders - saves a lot of headaches */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling when a nav link jumps to a section */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  /* The navbar is fixed, so it floats above the page.
+     This padding stops it from covering the top of the hero section. */
+  padding-top: var(--nav-height);
+}
+
+/* Each main section gets the same spacing and a max width so
+   text doesn't stretch across really wide screens */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  /* When a nav link scrolls to a section, leave room for the fixed navbar */
+  scroll-margin-top: var(--nav-height);
+}
+
+/* Section headings: dark blue with a short gold line underneath */
+section h2 {
+  color: var(--primary);
+  font-size: 1.9rem;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;   /* so the gold line is only as wide as the text */
+}
+
+section h3 {
+  color: var(--primary);
+  margin: 20px 0 10px;
+}
+
+section p {
+  margin-bottom: 12px;
+}
+
+
+/* ---------- 3. NAVIGATION BAR ---------- */
+
+header {
+  /* position: fixed keeps the navbar stuck to the top while scrolling */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background-color: var(--primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;            /* keeps it above everything else */
+}
+
+/* Put the site name on the left and the links on the right */
+nav {
+  max-width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Site name (the h1 inside the nav) */
+nav h1 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+/* Remove bullet points from the nav list and line the links up in a row */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+/* White link text with a bit of padding so it's easy to click */
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+/* Hover effect: gold background with dark text */
+nav a:hover {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+
+/* ---------- 4. HERO / BANNER SECTION ---------- */
+
+/* The hero is a <section>, so we have to override the default
+   section width and padding here to let the gradient go edge to edge */
+#hero {
+  max-width: none;
+  padding: 100px 20px;
+  text-align: center;
+  color: #ffffff;
+  /* Diagonal gradient from dark blue to a lighter blue */
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+/* Tagline: big and bold. The gold underline from the normal
+   section headings is removed because it looks odd here. */
+#hero h2 {
+  color: #ffffff;
+  font-size: 3rem;
+  border-bottom: none;
+  display: block;
+  margin-bottom: 14px;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  color: #dbe4ff;
+  margin-bottom: 30px;
+}
+
+/* Links wrapping the hero buttons shouldn't show an underline */
+#hero a {
+  text-decoration: none;
+}
+
+
+/* ---------- 5. BUTTONS ---------- */
+
+/* Shared look for every button on the site */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  margin: 5px;
+  border: 2px solid var(--accent);
+  border-radius: 30px;     /* big radius = pill shape */
+  background-color: var(--accent);
+  color: var(--primary);
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, transform 0.15s;
+}
+
+/* Hover: slightly darker gold and a tiny lift */
+button:hover {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+/* Main hero button keeps the solid gold look, but a bit bigger */
+.btn-primary {
+  padding: 12px 30px;
+}
+
+/* Outline version: transparent with a white border, for the second hero button */
+.btn-outline {
+  padding: 12px 30px;
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: var(--primary);
+}
+
+
+/* ---------- 6. ABOUT SECTION ---------- */
+
+/* Lists of teams and venues: gold bullets and a little breathing room */
+#about ul {
+  margin-left: 24px;
+  margin-bottom: 10px;
+}
+
+#about li {
+  margin-bottom: 6px;
+}
+
+#about li::marker {
+  color: var(--accent);
+}
+
+
+/* ---------- 7. TABLES (schedule + my bookings) ---------- */
+
+/* On small screens the table scrolls sideways inside this box
+   instead of breaking the whole page layout */
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 15px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;   /* merges the borders between cells */
+  background-color: var(--surface);
+}
+
+/* Header row: dark blue background with white text */
+th {
+  background-color: var(--primary);
+  color: #ffffff;
+  text-align: left;
+  padding: 14px 12px;
+  white-space: nowrap;         /* keep headings on one line */
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Zebra stripes: every second row is slightly tinted */
+tbody tr:nth-child(even) {
+  background-color: #f8f9fd;
+}
+
+/* Highlight the row the mouse is over */
+tbody tr:hover {
+  background-color: #fff6d6;
+}
+
+/* The Book buttons inside the table are a bit smaller than normal */
+td button {
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Links around buttons shouldn't be underlined */
+td a {
+  text-decoration: none;
+}
+
+
+/* ---------- 8. TEAM FILTER ---------- */
+
+#team-filter {
+  margin-left: 8px;
+}
+
+
+/* ---------- 9. FORMS ---------- */
+
+/* Labels: bold, on their own line above each input */
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+/* Inputs and dropdowns share the same look */
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Gold glow when the user clicks into a field */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 179, 1, 0.3);
+}
+
+/* The team filter dropdown should only be as wide as its content */
+#team-filter {
+  width: auto;
+  display: inline-block;
+}
+
+/* Filter form sits directly above the table */
+#matches form {
+  margin-bottom: 10px;
+}
+
+#matches form label {
+  display: inline-block;
+}
+
+
+/* ---------- 10. BOOKING SECTION (form + summary side by side) ---------- */
+
+/* Two columns: the form takes more space, the summary card is narrower */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* The form is shown as a white card */
+#booking-form {
+  background-color: var(--surface);
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+#booking-form p {
+  margin-bottom: 16px;
+}
+
+/* Confirm button stretches across the whole form */
+#booking-form button[type="submit"] {
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 12px;
+}
+
+/* Summary card: dark blue with a gold top border so it stands out.
+   "sticky" keeps it visible while scrolling past a long form. */
+#booking-summary {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 24px;
+  border-radius: var(--radius);
+  border-top: 5px solid var(--accent);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+}
+
+#booking-summary h3 {
+  color: var(--accent);
+  margin-top: 0;
+}
+
+/* Thin divider line above the total */
+#booking-summary hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 14px 0;
+}
+
+/* Make the total amount stand out */
+#booking-summary p:last-child {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 0;
+}
+
+
+/* ---------- 11. GUIDELINE CARDS ---------- */
+
+/* Three equal columns that wrap onto new rows if there's no room */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+/* Each card: white box, rounded corners, shadow and a gold accent on top */
+.card {
+  background-color: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  border-top: 5px solid var(--accent);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+/* Cards lift up a little on hover */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(11, 31, 75, 0.2);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  margin-bottom: 0;
+  color: var(--text-light);
+}
+
+
+/* ---------- 12. FOOTER ---------- */
+
+footer {
+  background-color: var(--primary);
+  color: #cfd8f3;
+  text-align: center;
+  padding: 24px 20px;
+  border-top: 4px solid var(--accent);
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* ---------- 13. RESPONSIVE (tablets and phones) ---------- */
+
+/* Screens 800px wide or smaller: stack the booking form and summary */
+@media (max-width: 800px) {
+  .booking-layout {
+    grid-template-columns: 1fr;   /* one column instead of two */
+  }
+
+  /* No need for the sticky behaviour once it sits below the form */
+  #booking-summary {
+    position: static;
+  }
+
+  #hero h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Screens 650px wide or smaller: the navbar needs two rows,
+   so we make it taller and stack the logo above the links */
+@media (max-width: 650px) {
+  :root {
+    --nav-height: 100px;
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  nav h1 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  #hero {
+    padding: 70px 20px;
+  }
+
+  #hero h2 {
+    font-size: 1.8rem;
+  }
+}
